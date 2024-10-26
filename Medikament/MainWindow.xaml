@@ -1,0 +1,37 @@
+﻿<Window x:Class="Medikament.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medikament"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="307">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFFF7673" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image  HorizontalAlignment="Left" Height="49" Margin="10,0,0,0" VerticalAlignment="Top" Width="258"/>
+        <TextBox x:Name="textBox7" HorizontalAlignment="Left" Margin="10,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Height="27"/>
+        <TextBox x:Name="textBox8" HorizontalAlignment="Left" Margin="10,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Height="27"/>
+        <Button x:Name="Button1" Content="Вход" HorizontalAlignment="Left" Margin="12,364,0,0" VerticalAlignment="Top" Width="260" Click="Button1_Click" Height="36" Foreground="White" FontSize="18">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF34C6CD" Offset="1"/>
+                    <GradientStop Color="#FFFF4540"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label Content="Логин:" HorizontalAlignment="Left" Margin="95,41,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" Height="42" Width="91" FontSize="24"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="88,115,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" Height="42" Width="108" FontSize="24"/>
+        <TextBox x:Name="textBox9" HorizontalAlignment="Left" Height="26" Margin="167,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101"/>
+        <Label x:Name="label2" Content="" HorizontalAlignment="Left" Margin="21,226,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Введите капчу:" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" Height="42" Width="210" FontSize="14"/>
+    
+    </Grid>
+</Window>

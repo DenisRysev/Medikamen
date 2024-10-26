@@ -1,0 +1,43 @@
+﻿<Window x:Class="Medikament.dobavochka"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medikament"
+        mc:Ignorable="d"
+        Title="dobavochka" Height="462" Width="314">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFFF7673" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBox x:Name="naim" HorizontalAlignment="Left" Margin="36,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="191" Height="26" FontSize="16"/>
+        <TextBox x:Name="kol" HorizontalAlignment="Left" Margin="36,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="191" Height="26" FontSize="16" PreviewTextInput="kol_PreviewTextInput"/>
+        <Label Content="Наименование медикамента" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="ВидМедикамента" HorizontalAlignment="Left" Margin="25,67,0,0" VerticalAlignment="Top"/>
+        <Label Content="В чем измеряется?" HorizontalAlignment="Left" Margin="25,120,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="vidmed" HorizontalAlignment="Left" Margin="36,93,0,0" VerticalAlignment="Top" Width="191" Height="22"/>
+        <ComboBox x:Name="ismmed" HorizontalAlignment="Left" Margin="36,146,0,0" VerticalAlignment="Top" Width="191" Height="22"/>
+        <Label Content="Количество в упаковке" HorizontalAlignment="Left" Margin="25,173,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="srok" HorizontalAlignment="Left" Margin="36,256,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="191" Height="26" FontSize="16"/>
+        <Label Content="Срок годности" HorizontalAlignment="Left" Margin="25,230,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="dobavka" Content="Добавить новый медикамент" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="272" Foreground="White" Height="41" FontSize="20" Click="dobavka_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF34C6CD" Offset="1"/>
+                    <GradientStop Color="#FFFF4540"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="back" Content="Вернуться" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top" Width="272" Foreground="White" Height="41" FontSize="20" Click="back_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF34C6CD" Offset="1"/>
+                    <GradientStop Color="#FFFF4540"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

@@ -1,0 +1,121 @@
+﻿<Window x:Class="Medikament.Sklad"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medikament"
+        mc:Ignorable="d"
+        Title="Sklad" Height="450" Width="813">
+    <Grid Margin="0,0,0,-6">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFFF7673" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBox x:Name="txt1" HorizontalAlignment="Left" Height="24" Margin="17,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212"/>
+        <TextBox x:Name="txt3" HorizontalAlignment="Left" Height="23" Margin="17,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="17,28,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="17,87,0,0" VerticalAlignment="Top" Height="25"/>
+        <TextBox x:Name="txt6" HorizontalAlignment="Left" Height="23" Margin="17,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="19,142,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="back" Content="Вернуться" HorizontalAlignment="Left" Margin="19,291,0,0" VerticalAlignment="Top" Width="272" Foreground="White" Height="41" FontSize="20" Click="back_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF34C6CD" Offset="1"/>
+                    <GradientStop Color="#FFFF4540"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TabControl x:Name="perehods" Margin="445,0,0,0">
+            <TabItem Header="Списание">
+                <Grid Background="#FF34C6CD">
+                    <Button x:Name="sozd_2" Content="Создать заявку" HorizontalAlignment="Left" Margin="78,86,0,0" VerticalAlignment="Top" Width="260" Foreground="White" Height="40" FontSize="20" Click="sozd_2_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF34C6CD" Offset="1"/>
+                                <GradientStop Color="#FFFF4540"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <ComboBox x:Name="med_2" HorizontalAlignment="Left" Margin="82,220,0,0" VerticalAlignment="Top" Width="260" Height="24"/>
+                    <Label Content="Медикамент" HorizontalAlignment="Left" Margin="16,189,0,0" VerticalAlignment="Top" Height="26" Width="133"/>
+                    <Label Content="Количество" HorizontalAlignment="Left" Margin="16,131,0,0" VerticalAlignment="Top" Height="24" Width="133"/>
+                    <TextBox x:Name="kol_2" HorizontalAlignment="Left" Height="24" Margin="78,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="258" PreviewTextInput="kol_2_PreviewTextInput"/>
+                    <Label Content="Описание" HorizontalAlignment="Left" Margin="16,10,0,0" VerticalAlignment="Top" Height="24" Width="133"/>
+                    <TextBox x:Name="naim_2" HorizontalAlignment="Left" Height="42" Margin="78,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="258"/>
+                    <Button x:Name="dobav_2" Content="Добавить медикамент" HorizontalAlignment="Left" Margin="82,309,0,0" VerticalAlignment="Top" Width="260" Foreground="White" Height="41" FontSize="20" Click="dobav_2_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF34C6CD" Offset="1"/>
+                                <GradientStop Color="#FFFF4540"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="postavka" Content="Принять поставку" HorizontalAlignment="Left" Margin="82,355,0,0" VerticalAlignment="Top" Width="260" Foreground="White" Height="41" FontSize="20" Click="postavka_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF34C6CD" Offset="1"/>
+                                <GradientStop Color="#FFFF4540"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <ComboBox x:Name="sklads1" HorizontalAlignment="Left" Margin="82,280,0,0" VerticalAlignment="Top" Width="260" Height="24"/>
+                    <Label Content="Склад" HorizontalAlignment="Left" Margin="16,249,0,0" VerticalAlignment="Top" Height="26" Width="133"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Поставка">
+                <Grid Background="#FF34C6CD">
+                    <Button x:Name="sozd" Content="Создать заявку" HorizontalAlignment="Left" Margin="78,70,0,0" VerticalAlignment="Top" Width="260" Foreground="White" Height="40" FontSize="20" Click="sozd_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF34C6CD" Offset="1"/>
+                                <GradientStop Color="#FFFF4540"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <ComboBox x:Name="postavchik" HorizontalAlignment="Left" Margin="78,41,0,0" VerticalAlignment="Top" Width="260" Height="24"/>
+                    <Label Content="Поставщик" HorizontalAlignment="Left" Margin="16,10,0,0" VerticalAlignment="Top" Height="26" Width="133"/>
+                    <ComboBox x:Name="med" HorizontalAlignment="Left" Margin="75,204,0,0" VerticalAlignment="Top" Width="260" Height="24"/>
+                    <Label Content="Медикамент" HorizontalAlignment="Left" Margin="16,173,0,0" VerticalAlignment="Top" Height="26" Width="133"/>
+                    <Button x:Name="dobav" Content="Добавить медикамент" HorizontalAlignment="Left" Margin="77,294,0,0" VerticalAlignment="Top" Width="260" Foreground="White" Height="41" FontSize="20" Click="dobav_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF34C6CD" Offset="1"/>
+                                <GradientStop Color="#FFFF4540"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="Количество" HorizontalAlignment="Left" Margin="16,115,0,0" VerticalAlignment="Top" Height="24" Width="133"/>
+                    <TextBox x:Name="kol" HorizontalAlignment="Left" Height="24" Margin="77,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="258" PreviewTextInput="kol_PreviewTextInput"/>
+                    <Button x:Name="spisanie" Content="Списать товар" HorizontalAlignment="Left" Margin="78,355,0,0" VerticalAlignment="Top" Width="264" Foreground="White" Height="41" FontSize="20" Click="spisanie_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF34C6CD" Offset="1"/>
+                                <GradientStop Color="#FFFF4540"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <ComboBox x:Name="sklads2" HorizontalAlignment="Left" Margin="74,264,0,0" VerticalAlignment="Top" Width="261" Height="25"/>
+                    <Label Content="Склад" HorizontalAlignment="Left" Margin="16,233,0,0" VerticalAlignment="Top" Height="26" Width="133"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="prosmotr" Content="Просмотр медикаментов" HorizontalAlignment="Left" Margin="19,383,0,0" VerticalAlignment="Top" Width="272" Foreground="White" Height="41" FontSize="20" Click="prosmotr_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF34C6CD" Offset="1"/>
+                    <GradientStop Color="#FFFF4540"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="dobavka" Content="Добавить новый медикамент" HorizontalAlignment="Left" Margin="17,337,0,0" VerticalAlignment="Top" Width="272" Foreground="White" Height="41" FontSize="20" Click="dobavka_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF34C6CD" Offset="1"/>
+                    <GradientStop Color="#FFFF4540"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

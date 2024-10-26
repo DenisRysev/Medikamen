@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MedikamentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ВидМедикамента">
+          <Key>
+            <PropertyRef Name="КодВидаМедикамента" />
+          </Key>
+          <Property Name="КодВидаМедикамента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ДокументПоставкии">
+          <Key>
+            <PropertyRef Name="КодДокументаПоставки" />
+          </Key>
+          <Property Name="КодДокументаПоставки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ДатаПоставки" Type="datetime" />
+          <Property Name="КодПоставщика" Type="int" />
+          <Property Name="КодСотрудника" Type="int" />
+        </EntityType>
+        <EntityType Name="ДокументСписания">
+          <Key>
+            <PropertyRef Name="КодДокументаСписания" />
+          </Key>
+          <Property Name="КодДокументаСписания" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Комментарий" Type="nchar" MaxLength="50" />
+          <Property Name="КодСотрудника" Type="int" />
+          <Property Name="ДатаСписания" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Должность">
+          <Key>
+            <PropertyRef Name="КодДолжности" />
+          </Key>
+          <Property Name="КодДолжности" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Измерение">
+          <Key>
+            <PropertyRef Name="КодИзмерения" />
+          </Key>
+          <Property Name="КодИзмерения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Медикамент">
+          <Key>
+            <PropertyRef Name="КодМедикамента" />
+          </Key>
+          <Property Name="КодМедикамента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="НаименованиеМедикамента" Type="nchar" MaxLength="50" />
+          <Property Name="КодВидаМедикамента" Type="int" />
+          <Property Name="КодИзмерения" Type="int" />
+          <Property Name="КоличествоВУпаковке" Type="int" />
+          <Property Name="СрокГодности" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Поставка">
+          <Key>
+            <PropertyRef Name="КодПоставки" />
+          </Key>
+          <Property Name="КодПоставки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="КодДокументаПоставки" Type="int" />
+          <Property Name="Количество" Type="int" />
+          <Property Name="КодПозицииСклада" Type="int" />
+        </EntityType>
+        <EntityType Name="Поставщик">
+          <Key>
+            <PropertyRef Name="КодПоставщика" />
+          </Key>
+          <Property Name="КодПоставщика" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="НаименованиеПоставщика" Type="nchar" MaxLength="50" />
+          <Property Name="Адрес" Type="nchar" MaxLength="50" />
+          <Property Name="Телефон" Type="nchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="Склад">
+          <Key>
+            <PropertyRef Name="КодПозицииСклада" />
+          </Key>
+          <Property Name="КодПозицииСклада" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="КодМедикамента" Type="int" />
+          <Property Name="Количество" Type="int" />
+          <Property Name="КодСклада" Type="int" />
+        </EntityType>
+        <EntityType Name="Склады">
+          <Key>
+            <PropertyRef Name="КодСклада" />
+          </Key>
+          <Property Name="КодСклада" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Сотрудник">
+          <Key>
+            <PropertyRef Name="КодСотрудника" />
+          </Key>
+          <Property Name="КодСотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО" Type="nchar" MaxLength="50" />
+          <Property Name="КодДолжности" Type="int" />
+          <Property Name="НомерТелефона" Type="nchar" MaxLength="11" />
+          <Property Name="Логин" Type="nchar" MaxLength="50" />
+          <Property Name="Пароль" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="СписокСписания">
+          <Key>
+            <PropertyRef Name="КодСписания" />
+          </Key>
+          <Property Name="КодСписания" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="КодДокументаСписания" Type="int" />
+          <Property Name="Количество" Type="int" />
+          <Property Name="КодПозицииСклада" Type="int" />
+        </EntityType>
+        <Association Name="FK_ДокументПоставкии_Поставщик">
+          <End Role="Поставщик" Type="Self.Поставщик" Multiplicity="0..1" />
+          <End Role="ДокументПоставкии" Type="Self.ДокументПоставкии" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Поставщик">
+              <PropertyRef Name="КодПоставщика" />
+            </Principal>
+            <Dependent Role="ДокументПоставкии">
+              <PropertyRef Name="КодПоставщика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ДокументПоставкии_Сотрудник">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="ДокументПоставкии" Type="Self.ДокументПоставкии" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="КодСотрудника" />
+            </Principal>
+            <Dependent Role="ДокументПоставкии">
+              <PropertyRef Name="КодСотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ДокументСписания_Сотрудник">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="ДокументСписания" Type="Self.ДокументСписания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="КодСотрудника" />
+            </Principal>
+            <Dependent Role="ДокументСписания">
+              <PropertyRef Name="КодСотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Медикамент_ВидМедикамента">
+          <End Role="ВидМедикамента" Type="Self.ВидМедикамента" Multiplicity="0..1" />
+          <End Role="Медикамент" Type="Self.Медикамент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ВидМедикамента">
+              <PropertyRef Name="КодВидаМедикамента" />
+            </Principal>
+            <Dependent Role="Медикамент">
+              <PropertyRef Name="КодВидаМедикамента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Медикамент_Измерение">
+          <End Role="Измерение" Type="Self.Измерение" Multiplicity="0..1" />
+          <End Role="Медикамент" Type="Self.Медикамент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Измерение">
+              <PropertyRef Name="КодИзмерения" />
+            </Principal>
+            <Dependent Role="Медикамент">
+              <PropertyRef Name="КодИзмерения" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставка_ДокументПоставкии">
+          <End Role="ДокументПоставкии" Type="Self.ДокументПоставкии" Multiplicity="0..1" />
+          <End Role="Поставка" Type="Self.Поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ДокументПоставкии">
+              <PropertyRef Name="КодДокументаПоставки" />
+            </Principal>
+            <Dependent Role="Поставка">
+              <PropertyRef Name="КодДокументаПоставки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставка_Склад">
+          <End Role="Склад" Type="Self.Склад" Multiplicity="0..1" />
+          <End Role="Поставка" Type="Self.Поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Principal>
+            <Dependent Role="Поставка">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Склад_Медикамент1">
+          <End Role="Медикамент" Type="Self.Медикамент" Multiplicity="0..1" />
+          <End Role="Склад" Type="Self.Склад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Медикамент">
+              <PropertyRef Name="КодМедикамента" />
+            </Principal>
+            <Dependent Role="Склад">
+              <PropertyRef Name="КодМедикамента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Склад_Склады1">
+          <End Role="Склады" Type="Self.Склады" Multiplicity="0..1" />
+          <End Role="Склад" Type="Self.Склад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склады">
+              <PropertyRef Name="КодСклада" />
+            </Principal>
+            <Dependent Role="Склад">
+              <PropertyRef Name="КодСклада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудник_Должность">
+          <End Role="Должность" Type="Self.Должность" Multiplicity="0..1" />
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Должность">
+              <PropertyRef Name="КодДолжности" />
+            </Principal>
+            <Dependent Role="Сотрудник">
+              <PropertyRef Name="КодДолжности" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_СписокСписания_ДокументСписания">
+          <End Role="ДокументСписания" Type="Self.ДокументСписания" Multiplicity="0..1" />
+          <End Role="СписокСписания" Type="Self.СписокСписания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ДокументСписания">
+              <PropertyRef Name="КодДокументаСписания" />
+            </Principal>
+            <Dependent Role="СписокСписания">
+              <PropertyRef Name="КодДокументаСписания" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_СписокСписания_Склад">
+          <End Role="Склад" Type="Self.Склад" Multiplicity="0..1" />
+          <End Role="СписокСписания" Type="Self.СписокСписания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Principal>
+            <Dependent Role="СписокСписания">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MedikamentModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ВидМедикамента" EntityType="Self.ВидМедикамента" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ДокументПоставкии" EntityType="Self.ДокументПоставкии" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ДокументСписания" EntityType="Self.ДокументСписания" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Должность" EntityType="Self.Должность" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Измерение" EntityType="Self.Измерение" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Медикамент" EntityType="Self.Медикамент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Поставка" EntityType="Self.Поставка" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Поставщик" EntityType="Self.Поставщик" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Склад" EntityType="Self.Склад" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Склады" EntityType="Self.Склады" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="СписокСписания" EntityType="Self.СписокСписания" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ДокументПоставкии_Поставщик" Association="Self.FK_ДокументПоставкии_Поставщик">
+            <End Role="Поставщик" EntitySet="Поставщик" />
+            <End Role="ДокументПоставкии" EntitySet="ДокументПоставкии" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ДокументПоставкии_Сотрудник" Association="Self.FK_ДокументПоставкии_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="ДокументПоставкии" EntitySet="ДокументПоставкии" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ДокументСписания_Сотрудник" Association="Self.FK_ДокументСписания_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="ДокументСписания" EntitySet="ДокументСписания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Медикамент_ВидМедикамента" Association="Self.FK_Медикамент_ВидМедикамента">
+            <End Role="ВидМедикамента" EntitySet="ВидМедикамента" />
+            <End Role="Медикамент" EntitySet="Медикамент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Медикамент_Измерение" Association="Self.FK_Медикамент_Измерение">
+            <End Role="Измерение" EntitySet="Измерение" />
+            <End Role="Медикамент" EntitySet="Медикамент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставка_ДокументПоставкии" Association="Self.FK_Поставка_ДокументПоставкии">
+            <End Role="ДокументПоставкии" EntitySet="ДокументПоставкии" />
+            <End Role="Поставка" EntitySet="Поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставка_Склад" Association="Self.FK_Поставка_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="Поставка" EntitySet="Поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Склад_Медикамент1" Association="Self.FK_Склад_Медикамент1">
+            <End Role="Медикамент" EntitySet="Медикамент" />
+            <End Role="Склад" EntitySet="Склад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Склад_Склады1" Association="Self.FK_Склад_Склады1">
+            <End Role="Склады" EntitySet="Склады" />
+            <End Role="Склад" EntitySet="Склад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Должность" Association="Self.FK_Сотрудник_Должность">
+            <End Role="Должность" EntitySet="Должность" />
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+          </AssociationSet>
+          <AssociationSet Name="FK_СписокСписания_ДокументСписания" Association="Self.FK_СписокСписания_ДокументСписания">
+            <End Role="ДокументСписания" EntitySet="ДокументСписания" />
+            <End Role="СписокСписания" EntitySet="СписокСписания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_СписокСписания_Склад" Association="Self.FK_СписокСписания_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="СписокСписания" EntitySet="СписокСписания" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedikamentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ВидМедикамента">
+          <Key>
+            <PropertyRef Name="КодВидаМедикамента" />
+          </Key>
+          <Property Name="КодВидаМедикамента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Медикамент" Relationship="Self.FK_Медикамент_ВидМедикамента" FromRole="ВидМедикамента" ToRole="Медикамент" />
+        </EntityType>
+        <EntityType Name="ДокументПоставкии">
+          <Key>
+            <PropertyRef Name="КодДокументаПоставки" />
+          </Key>
+          <Property Name="КодДокументаПоставки" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ДатаПоставки" Type="DateTime" Precision="3" />
+          <Property Name="КодПоставщика" Type="Int32" />
+          <Property Name="КодСотрудника" Type="Int32" />
+          <NavigationProperty Name="Поставщик" Relationship="Self.FK_ДокументПоставкии_Поставщик" FromRole="ДокументПоставкии" ToRole="Поставщик" />
+          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_ДокументПоставкии_Сотрудник" FromRole="ДокументПоставкии" ToRole="Сотрудник" />
+          <NavigationProperty Name="Поставка" Relationship="Self.FK_Поставка_ДокументПоставкии" FromRole="ДокументПоставкии" ToRole="Поставка" />
+        </EntityType>
+        <EntityType Name="ДокументСписания">
+          <Key>
+            <PropertyRef Name="КодДокументаСписания" />
+          </Key>
+          <Property Name="КодДокументаСписания" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Комментарий" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="КодСотрудника" Type="Int32" />
+          <Property Name="ДатаСписания" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_ДокументСписания_Сотрудник" FromRole="ДокументСписания" ToRole="Сотрудник" />
+          <NavigationProperty Name="СписокСписания" Relationship="Self.FK_СписокСписания_ДокументСписания" FromRole="ДокументСписания" ToRole="СписокСписания" />
+        </EntityType>
+        <EntityType Name="Должность">
+          <Key>
+            <PropertyRef Name="КодДолжности" />
+          </Key>
+          <Property Name="КодДолжности" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Сотрудник_Должность" FromRole="Должность" ToRole="Сотрудник" />
+        </EntityType>
+        <EntityType Name="Измерение">
+          <Key>
+            <PropertyRef Name="КодИзмерения" />
+          </Key>
+          <Property Name="КодИзмерения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Медикамент" Relationship="Self.FK_Медикамент_Измерение" FromRole="Измерение" ToRole="Медикамент" />
+        </EntityType>
+        <EntityType Name="Медикамент">
+          <Key>
+            <PropertyRef Name="КодМедикамента" />
+          </Key>
+          <Property Name="КодМедикамента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="НаименованиеМедикамента" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="КодВидаМедикамента" Type="Int32" />
+          <Property Name="КодИзмерения" Type="Int32" />
+          <Property Name="КоличествоВУпаковке" Type="Int32" />
+          <Property Name="СрокГодности" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ВидМедикамента" Relationship="Self.FK_Медикамент_ВидМедикамента" FromRole="Медикамент" ToRole="ВидМедикамента" />
+          <NavigationProperty Name="Измерение" Relationship="Self.FK_Медикамент_Измерение" FromRole="Медикамент" ToRole="Измерение" />
+          <NavigationProperty Name="Склад" Relationship="Self.FK_Склад_Медикамент1" FromRole="Медикамент" ToRole="Склад" />
+        </EntityType>
+        <EntityType Name="Поставка">
+          <Key>
+            <PropertyRef Name="КодПоставки" />
+          </Key>
+          <Property Name="КодПоставки" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="КодДокументаПоставки" Type="Int32" />
+          <Property Name="Количество" Type="Int32" />
+          <Property Name="КодПозицииСклада" Type="Int32" />
+          <NavigationProperty Name="ДокументПоставкии" Relationship="Self.FK_Поставка_ДокументПоставкии" FromRole="Поставка" ToRole="ДокументПоставкии" />
+          <NavigationProperty Name="Склад" Relationship="Self.FK_Поставка_Склад" FromRole="Поставка" ToRole="Склад" />
+        </EntityType>
+        <EntityType Name="Поставщик">
+          <Key>
+            <PropertyRef Name="КодПоставщика" />
+          </Key>
+          <Property Name="КодПоставщика" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="НаименованиеПоставщика" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Телефон" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ДокументПоставкии" Relationship="Self.FK_ДокументПоставкии_Поставщик" FromRole="Поставщик" ToRole="ДокументПоставкии" />
+        </EntityType>
+        <EntityType Name="Склад">
+          <Key>
+            <PropertyRef Name="КодПозицииСклада" />
+          </Key>
+          <Property Name="КодПозицииСклада" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="КодМедикамента" Type="Int32" />
+          <Property Name="Количество" Type="Int32" />
+          <Property Name="КодСклада" Type="Int32" />
+          <NavigationProperty Name="Медикамент" Relationship="Self.FK_Склад_Медикамент1" FromRole="Склад" ToRole="Медикамент" />
+          <NavigationProperty Name="Поставка" Relationship="Self.FK_Поставка_Склад" FromRole="Склад" ToRole="Поставка" />
+          <NavigationProperty Name="Склады" Relationship="Self.FK_Склад_Склады1" FromRole="Склад" ToRole="Склады" />
+          <NavigationProperty Name="СписокСписания" Relationship="Self.FK_СписокСписания_Склад" FromRole="Склад" ToRole="СписокСписания" />
+        </EntityType>
+        <EntityType Name="Склады">
+          <Key>
+            <PropertyRef Name="КодСклада" />
+          </Key>
+          <Property Name="КодСклада" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Склад" Relationship="Self.FK_Склад_Склады1" FromRole="Склады" ToRole="Склад" />
+        </EntityType>
+        <EntityType Name="Сотрудник">
+          <Key>
+            <PropertyRef Name="КодСотрудника" />
+          </Key>
+          <Property Name="КодСотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="КодДолжности" Type="Int32" />
+          <Property Name="НомерТелефона" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Логин" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ДокументПоставкии" Relationship="Self.FK_ДокументПоставкии_Сотрудник" FromRole="Сотрудник" ToRole="ДокументПоставкии" />
+          <NavigationProperty Name="ДокументСписания" Relationship="Self.FK_ДокументСписания_Сотрудник" FromRole="Сотрудник" ToRole="ДокументСписания" />
+          <NavigationProperty Name="Должность" Relationship="Self.FK_Сотрудник_Должность" FromRole="Сотрудник" ToRole="Должность" />
+        </EntityType>
+        <EntityType Name="СписокСписания">
+          <Key>
+            <PropertyRef Name="КодСписания" />
+          </Key>
+          <Property Name="КодСписания" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="КодДокументаСписания" Type="Int32" />
+          <Property Name="Количество" Type="Int32" />
+          <Property Name="КодПозицииСклада" Type="Int32" />
+          <NavigationProperty Name="ДокументСписания" Relationship="Self.FK_СписокСписания_ДокументСписания" FromRole="СписокСписания" ToRole="ДокументСписания" />
+          <NavigationProperty Name="Склад" Relationship="Self.FK_СписокСписания_Склад" FromRole="СписокСписания" ToRole="Склад" />
+        </EntityType>
+        <Association Name="FK_Медикамент_ВидМедикамента">
+          <End Role="ВидМедикамента" Type="Self.ВидМедикамента" Multiplicity="0..1" />
+          <End Role="Медикамент" Type="Self.Медикамент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ВидМедикамента">
+              <PropertyRef Name="КодВидаМедикамента" />
+            </Principal>
+            <Dependent Role="Медикамент">
+              <PropertyRef Name="КодВидаМедикамента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ДокументПоставкии_Поставщик">
+          <End Role="Поставщик" Type="Self.Поставщик" Multiplicity="0..1" />
+          <End Role="ДокументПоставкии" Type="Self.ДокументПоставкии" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Поставщик">
+              <PropertyRef Name="КодПоставщика" />
+            </Principal>
+            <Dependent Role="ДокументПоставкии">
+              <PropertyRef Name="КодПоставщика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ДокументПоставкии_Сотрудник">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="ДокументПоставкии" Type="Self.ДокументПоставкии" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="КодСотрудника" />
+            </Principal>
+            <Dependent Role="ДокументПоставкии">
+              <PropertyRef Name="КодСотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставка_ДокументПоставкии">
+          <End Role="ДокументПоставкии" Type="Self.ДокументПоставкии" Multiplicity="0..1" />
+          <End Role="Поставка" Type="Self.Поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ДокументПоставкии">
+              <PropertyRef Name="КодДокументаПоставки" />
+            </Principal>
+            <Dependent Role="Поставка">
+              <PropertyRef Name="КодДокументаПоставки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ДокументСписания_Сотрудник">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="ДокументСписания" Type="Self.ДокументСписания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="КодСотрудника" />
+            </Principal>
+            <Dependent Role="ДокументСписания">
+              <PropertyRef Name="КодСотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_СписокСписания_ДокументСписания">
+          <End Role="ДокументСписания" Type="Self.ДокументСписания" Multiplicity="0..1" />
+          <End Role="СписокСписания" Type="Self.СписокСписания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ДокументСписания">
+              <PropertyRef Name="КодДокументаСписания" />
+            </Principal>
+            <Dependent Role="СписокСписания">
+              <PropertyRef Name="КодДокументаСписания" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудник_Должность">
+          <End Role="Должность" Type="Self.Должность" Multiplicity="0..1" />
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Должность">
+              <PropertyRef Name="КодДолжности" />
+            </Principal>
+            <Dependent Role="Сотрудник">
+              <PropertyRef Name="КодДолжности" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Медикамент_Измерение">
+          <End Role="Измерение" Type="Self.Измерение" Multiplicity="0..1" />
+          <End Role="Медикамент" Type="Self.Медикамент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Измерение">
+              <PropertyRef Name="КодИзмерения" />
+            </Principal>
+            <Dependent Role="Медикамент">
+              <PropertyRef Name="КодИзмерения" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Склад_Медикамент1">
+          <End Role="Медикамент" Type="Self.Медикамент" Multiplicity="0..1" />
+          <End Role="Склад" Type="Self.Склад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Медикамент">
+              <PropertyRef Name="КодМедикамента" />
+            </Principal>
+            <Dependent Role="Склад">
+              <PropertyRef Name="КодМедикамента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Поставка_Склад">
+          <End Role="Склад" Type="Self.Склад" Multiplicity="0..1" />
+          <End Role="Поставка" Type="Self.Поставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Principal>
+            <Dependent Role="Поставка">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Склад_Склады1">
+          <End Role="Склады" Type="Self.Склады" Multiplicity="0..1" />
+          <End Role="Склад" Type="Self.Склад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склады">
+              <PropertyRef Name="КодСклада" />
+            </Principal>
+            <Dependent Role="Склад">
+              <PropertyRef Name="КодСклада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_СписокСписания_Склад">
+          <End Role="Склад" Type="Self.Склад" Multiplicity="0..1" />
+          <End Role="СписокСписания" Type="Self.СписокСписания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Principal>
+            <Dependent Role="СписокСписания">
+              <PropertyRef Name="КодПозицииСклада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedikamentEntities9" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="ВидМедикамента" EntityType="Self.ВидМедикамента" />
+          <EntitySet Name="ДокументПоставкии" EntityType="Self.ДокументПоставкии" />
+          <EntitySet Name="ДокументСписания" EntityType="Self.ДокументСписания" />
+          <EntitySet Name="Должность" EntityType="Self.Должность" />
+          <EntitySet Name="Измерение" EntityType="Self.Измерение" />
+          <EntitySet Name="Медикамент" EntityType="Self.Медикамент" />
+          <EntitySet Name="Поставка" EntityType="Self.Поставка" />
+          <EntitySet Name="Поставщик" EntityType="Self.Поставщик" />
+          <EntitySet Name="Склад" EntityType="Self.Склад" />
+          <EntitySet Name="Склады" EntityType="Self.Склады" />
+          <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" />
+          <EntitySet Name="СписокСписания" EntityType="Self.СписокСписания" />
+          <AssociationSet Name="FK_Медикамент_ВидМедикамента" Association="Self.FK_Медикамент_ВидМедикамента">
+            <End Role="ВидМедикамента" EntitySet="ВидМедикамента" />
+            <End Role="Медикамент" EntitySet="Медикамент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ДокументПоставкии_Поставщик" Association="Self.FK_ДокументПоставкии_Поставщик">
+            <End Role="Поставщик" EntitySet="Поставщик" />
+            <End Role="ДокументПоставкии" EntitySet="ДокументПоставкии" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ДокументПоставкии_Сотрудник" Association="Self.FK_ДокументПоставкии_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="ДокументПоставкии" EntitySet="ДокументПоставкии" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставка_ДокументПоставкии" Association="Self.FK_Поставка_ДокументПоставкии">
+            <End Role="ДокументПоставкии" EntitySet="ДокументПоставкии" />
+            <End Role="Поставка" EntitySet="Поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ДокументСписания_Сотрудник" Association="Self.FK_ДокументСписания_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="ДокументСписания" EntitySet="ДокументСписания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_СписокСписания_ДокументСписания" Association="Self.FK_СписокСписания_ДокументСписания">
+            <End Role="ДокументСписания" EntitySet="ДокументСписания" />
+            <End Role="СписокСписания" EntitySet="СписокСписания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Должность" Association="Self.FK_Сотрудник_Должность">
+            <End Role="Должность" EntitySet="Должность" />
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Медикамент_Измерение" Association="Self.FK_Медикамент_Измерение">
+            <End Role="Измерение" EntitySet="Измерение" />
+            <End Role="Медикамент" EntitySet="Медикамент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Склад_Медикамент1" Association="Self.FK_Склад_Медикамент1">
+            <End Role="Медикамент" EntitySet="Медикамент" />
+            <End Role="Склад" EntitySet="Склад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Поставка_Склад" Association="Self.FK_Поставка_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="Поставка" EntitySet="Поставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Склад_Склады1" Association="Self.FK_Склад_Склады1">
+            <End Role="Склады" EntitySet="Склады" />
+            <End Role="Склад" EntitySet="Склад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_СписокСписания_Склад" Association="Self.FK_СписокСписания_Склад">
+            <End Role="Склад" EntitySet="Склад" />
+            <End Role="СписокСписания" EntitySet="СписокСписания" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MedikamentModelContainer" CdmEntityContainer="MedikamentEntities9">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MedikamentModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ВидМедикамента">
+            <EntityTypeMapping TypeName="MedikamentModel.ВидМедикамента">
+              <MappingFragment StoreEntitySet="ВидМедикамента">
+                <ScalarProperty Name="КодВидаМедикамента" ColumnName="КодВидаМедикамента" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ДокументПоставкии">
+            <EntityTypeMapping TypeName="MedikamentModel.ДокументПоставкии">
+              <MappingFragment StoreEntitySet="ДокументПоставкии">
+                <ScalarProperty Name="КодДокументаПоставки" ColumnName="КодДокументаПоставки" />
+                <ScalarProperty Name="ДатаПоставки" ColumnName="ДатаПоставки" />
+                <ScalarProperty Name="КодПоставщика" ColumnName="КодПоставщика" />
+                <ScalarProperty Name="КодСотрудника" ColumnName="КодСотрудника" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ДокументСписания">
+            <EntityTypeMapping TypeName="MedikamentModel.ДокументСписания">
+              <MappingFragment StoreEntitySet="ДокументСписания">
+                <ScalarProperty Name="КодДокументаСписания" ColumnName="КодДокументаСписания" />
+                <ScalarProperty Name="Комментарий" ColumnName="Комментарий" />
+                <ScalarProperty Name="КодСотрудника" ColumnName="КодСотрудника" />
+                <ScalarProperty Name="ДатаСписания" ColumnName="ДатаСписания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Должность">
+            <EntityTypeMapping TypeName="MedikamentModel.Должность">
+              <MappingFragment StoreEntitySet="Должность">
+                <ScalarProperty Name="КодДолжности" ColumnName="КодДолжности" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Измерение">
+            <EntityTypeMapping TypeName="MedikamentModel.Измерение">
+              <MappingFragment StoreEntitySet="Измерение">
+                <ScalarProperty Name="КодИзмерения" ColumnName="КодИзмерения" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Медикамент">
+            <EntityTypeMapping TypeName="MedikamentModel.Медикамент">
+              <MappingFragment StoreEntitySet="Медикамент">
+                <ScalarProperty Name="КодМедикамента" ColumnName="КодМедикамента" />
+                <ScalarProperty Name="НаименованиеМедикамента" ColumnName="НаименованиеМедикамента" />
+                <ScalarProperty Name="КодВидаМедикамента" ColumnName="КодВидаМедикамента" />
+                <ScalarProperty Name="КодИзмерения" ColumnName="КодИзмерения" />
+                <ScalarProperty Name="КоличествоВУпаковке" ColumnName="КоличествоВУпаковке" />
+                <ScalarProperty Name="СрокГодности" ColumnName="СрокГодности" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Поставка">
+            <EntityTypeMapping TypeName="MedikamentModel.Поставка">
+              <MappingFragment StoreEntitySet="Поставка">
+                <ScalarProperty Name="КодПоставки" ColumnName="КодПоставки" />
+                <ScalarProperty Name="КодДокументаПоставки" ColumnName="КодДокументаПоставки" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="КодПозицииСклада" ColumnName="КодПозицииСклада" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Поставщик">
+            <EntityTypeMapping TypeName="MedikamentModel.Поставщик">
+              <MappingFragment StoreEntitySet="Поставщик">
+                <ScalarProperty Name="КодПоставщика" ColumnName="КодПоставщика" />
+                <ScalarProperty Name="НаименованиеПоставщика" ColumnName="НаименованиеПоставщика" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Склад">
+            <EntityTypeMapping TypeName="MedikamentModel.Склад">
+              <MappingFragment StoreEntitySet="Склад">
+                <ScalarProperty Name="КодПозицииСклада" ColumnName="КодПозицииСклада" />
+                <ScalarProperty Name="КодМедикамента" ColumnName="КодМедикамента" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="КодСклада" ColumnName="КодСклада" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Склады">
+            <EntityTypeMapping TypeName="MedikamentModel.Склады">
+              <MappingFragment StoreEntitySet="Склады">
+                <ScalarProperty Name="КодСклада" ColumnName="КодСклада" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудник">
+            <EntityTypeMapping TypeName="MedikamentModel.Сотрудник">
+              <MappingFragment StoreEntitySet="Сотрудник">
+                <ScalarProperty Name="КодСотрудника" ColumnName="КодСотрудника" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="КодДолжности" ColumnName="КодДолжности" />
+                <ScalarProperty Name="НомерТелефона" ColumnName="НомерТелефона" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="СписокСписания">
+            <EntityTypeMapping TypeName="MedikamentModel.СписокСписания">
+              <MappingFragment StoreEntitySet="СписокСписания">
+                <ScalarProperty Name="КодСписания" ColumnName="КодСписания" />
+                <ScalarProperty Name="КодДокументаСписания" ColumnName="КодДокументаСписания" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="КодПозицииСклада" ColumnName="КодПозицииСклада" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

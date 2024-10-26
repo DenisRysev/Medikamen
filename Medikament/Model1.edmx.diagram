@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14815e37449c4039a930611a0661ed8c" Name="Diagram1">
+        <EntityTypeShape EntityType="MedikamentModel.sysdiagram" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.ВидМедикамента" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.ДокументПоставкии" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.ДокументСписания" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Должность" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Измерение" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Медикамент" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Поставка" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Поставщик" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Склад" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Склады" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.Сотрудник" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedikamentModel.СписокСписания" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MedikamentModel.FK_Медикамент_ВидМедикамента" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_ДокументПоставкии_Поставщик" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_ДокументПоставкии_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_Поставка_ДокументПоставкии" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_ДокументСписания_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_СписокСписания_ДокументСписания" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_Сотрудник_Должность" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_Медикамент_Измерение" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_Склад_Медикамент1" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_Поставка_Склад" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_Склад_Склады1" ManuallyRouted="false" />
+        <AssociationConnector Association="MedikamentModel.FK_СписокСписания_Склад" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
